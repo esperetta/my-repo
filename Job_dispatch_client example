@@ -1,12 +1,19 @@
+To install the client by visiting https://github.com/ebi-wp/webservice-clients:
+
+git clone https://github.com/ebi-wp/webservice-clients.git
+
 virtualenv -p python3 env
 source ./env/bin/activate
 pip install --upgrade xmltramp2
+
+(for documentation read here: https://pypi.org/project/xmltramp2/) 
 
 python dbfetch.py fetchData sp:grass_drome fasta > query.fasta
 
 python /webservice-clients/python/dbfetch.py fetchData sp:grass_drome fasta > query.fasta
 
-python ncbiblast.py --email  --stype protein --database uniprotkb_swissprot --program blastp --sequence query.fasta --alignments 20 --score 20 --outformat ids --outfile hits
+python ncbiblast.py --email  --stype protein --database uniprotkb_swissprot --program blastp --sequence query.fasta --alignments 20 
+--score 20 --outformat ids --outfile hits.ids.txt
 
 python dbfetch.py fetchData @hits.ids.txt fasta > hits.ids.fasta 
 
