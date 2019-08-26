@@ -1,0 +1,17 @@
+Code for Blast installation on the computer. 
+
+How to query blast specifically for an organism.
+
+sudo apt-get install ncbi-blast+
+which blastp
+
+
+blastp -query queryprotein.fasta -db swissprot -remote -task blastp -entrez_query "txid9606[ORGN]" -outfmt 7 -out blast_result_Hsapiens3.table -max_target_seqs 10 -max_hsps 5
+
+
+You can search blast for a bulk of sequences
+cat 1.fasta 2.fasta > protein.faa
+
+blastp -query protein.faa -db nr -remote -task blastp -entrez_query "Homo sapiens [organism]" -outfmt 7 -out blast_result_drosophila.table -max_target_seqs 10
+
+
